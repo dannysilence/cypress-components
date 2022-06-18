@@ -31,6 +31,8 @@ jobs:
           registry-url: https://npmjs.org/
       - run: npm ci
       - run: npm run build
+      - run: npm test
+      - run: npm version patch --no-git-tag-version
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
