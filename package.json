@@ -14,10 +14,6 @@
     "type": "git",
     "url": "https://github.com/dannysilence/cypress-components.git"
   },
-  "publishConfig": {
-    "access": "public", 
-    "registry": "https://npmjs.org/" 
-  }, 
   "author": "",
   "license": "ISC",
   "bugs": {
