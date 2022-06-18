@@ -12,7 +12,7 @@ declare namespace Automation {
 
         interface IFactory {
             fromHTMLElement<TComponent extends _comp.Component<HTMLElement>>(element: HTMLElement, ctor: (new (base: HTMLElement) => TComponent)): TComponent; 
-            fromJQuery<TComponent extends _comp.Component<HTMLElement>>(jquery: JQuery<HTMLElement>, ctor: (new (base: HTMLElement) => TComponent)): void;
+            fromJQuery<TComponent extends _comp.Component<HTMLElement>>(jquery: JQuery<HTMLElement>, ctor: (new (base: HTMLElement) => TComponent)): TComponent;
         }
     }
 }
