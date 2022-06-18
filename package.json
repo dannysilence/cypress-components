@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "pretest": "npm run build", 
     "test": "echo done",
     "build": "tsc -p tsconfig.json", 
     "prepack": "npm version patch --no-git-tag-version --no-commit-hooks",
