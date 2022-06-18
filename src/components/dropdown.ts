@@ -1,10 +1,20 @@
-export class Dropdown {
-    constructor(private element?: HTMLElement) {
+import { Component } from "./component";
 
+export class Dropdown extends Component<HTMLElement> {
+    constructor(element: HTMLElement) {
+        super(element);
+    }
+    
+    public get selectedItem(): string { return this.getSelectedItem(); }
+    public set selectedItem(value: string) { this.setSelectedItem(value); }
+
+    public getSelectedItem(): string {
+        return ''; //TODO
     }
 
-    get Text(): string | undefined { return this.element?.innerText; }
-    get Container(): HTMLElement | undefined { return this.element; }
+    public setSelectedItem(value: string) {
+        //TODO
+    }
 }
 
 export interface DropdownOptions {

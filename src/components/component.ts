@@ -1,37 +1,34 @@
-            export interface IComponent<T extends Element> {
-                get Container(): T;
-                get Width(): number;
-                get Height(): number;
+// export interface IComponent<T extends Element> {
+//     get Container(): T;
+//     get Width(): number;
+//     get Height(): number;
 
-                getContainer(): T;
-                getWidth(): number;
-                getHeight(): number;
-            }
+//     getContainer(): T;
+//     getWidth(): number;
+//     getHeight(): number;
+// }
 
-            export class Component<T extends Element> implements IComponent<T> {
-                public get Container(): T { return this.getContainer(); }
-                public get Width(): number { return this.getWidth(); }
-                public get Height(): number { return this.getHeight(); }
-                
-                getContainer() {
-                    return this._container;
-                }
+export class Component<T extends Element> {
+    constructor(protected element: T) { }
 
-                getHeight(): number {
-                    return this._container.clientHeight;
-                }
+    public get Element(): T { return this.getElement(); }
+    public get Width(): number { return this.getWidth(); }
+    public get Height(): number { return this.getHeight(); }
+    public get Text(): string | undefined { return this.getText(); }
+    
+    getElement() {
+        return this.element;
+    }
 
-                getWidth(): number {
-                    return this._container.clientWidth;
-                }
+    getHeight(): number {
+        return this.element.clientHeight;
+    }
 
-                super(base: T) {
-                    this._container = base;
-                }
+    getWidth(): number {
+        return this.element.clientWidth;
+    }    
 
-                constructor(base: T) {
-                    this.super(base);
-                }
-
-                private _container: T;
-            }
+    getText(): string {
+        return this.element.textContent ?? '';
+    }
+}
