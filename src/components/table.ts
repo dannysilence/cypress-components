@@ -1,10 +1,9 @@
-export class Table {
-    constructor(private element?: HTMLElement) {
+import { Component } from "./component";
 
+export class Table extends Component<HTMLElement> {
+    constructor(element: HTMLElement) { 
+        super(element);
     }
-
-    get Text(): string | undefined { return this.element?.innerText; }
-    get Container(): HTMLElement | undefined { return this.element; }
 }
 
 export interface TableOptions {

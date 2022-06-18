@@ -8,4 +8,8 @@ export class Factory {
     static fromHTMLElement<TComponent extends Component<HTMLElement>>(element: HTMLElement, ctor: (new (base: HTMLElement) => TComponent)): TComponent {
         return new ctor(element);
     }
+
+    static fromJQuery<TComponent extends Component<HTMLElement>>(jquery: JQuery<HTMLElement>, ctor: (new (base: HTMLElement) => TComponent)): TComponent {
+        return new ctor(jquery.get(0));
+    }
 }

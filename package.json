@@ -1,11 +1,11 @@
 {
   "name": "cypress-components",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "tsc -p tsconfig.json",
+    "build": "tsc -p tsconfig.json && npm version patch --no-git-tag-version --no-commit-hooks && npm pack",
     "start": "tsc -p tsconfig.json --watch --watchFile usefseventsonparentdirectory"
   },
   "repository": {
@@ -21,6 +21,8 @@
   "dependencies": {
     "cypress": "^10.1.0"
   },
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "types": "dist/index.d.ts"
 }
