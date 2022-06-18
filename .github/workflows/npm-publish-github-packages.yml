@@ -28,9 +28,6 @@ jobs:
         with:
           node-version: 16
           registry-url: https://npmjs.org/
-      - run: npm adduser
-        env: 
-          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}} 
       - run: npm ci
       - run: npm test
       - run: npm version patch --no-git-tag-version
