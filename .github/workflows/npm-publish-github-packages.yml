@@ -30,7 +30,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: npm ci
       - run: npm test
-      - run: npm publish
+      - run: npm publish --registry https://npm.pkg.github.com/dannysilence/cypress-components
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - run: git add package.json
