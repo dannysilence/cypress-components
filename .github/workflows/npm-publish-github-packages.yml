@@ -20,6 +20,9 @@ jobs:
   publish-gpr:
     needs: build
     runs-on: ubuntu-latest
+    permissions:
+      - read
+      - write
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
@@ -33,3 +36,6 @@ jobs:
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+      - run: git add package.json
+      - run: git commit -m release
+      - run: git push origin <HEAD>
