@@ -54,7 +54,7 @@ jobs:
       - run: npm ci
       - run: npm test
       - run: npm version patch --no-git-tag-version
-      - run: npm publish --registry https://npm.pkg.github.com/dannysilence/cypress-components
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: git add package.json
