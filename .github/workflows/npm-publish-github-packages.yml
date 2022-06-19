@@ -39,14 +39,26 @@ jobs:
           node-version: 16
           registry-url: 'https://npm.pkg.github.com/'
           scope: '@dannysilence'
-      - run: |
+      - name: Build package
+        run: |
           npm ci
+          npm run build
           npm test
+      - name: Patch package version
+        if: github.ref == 'refs/heads/main'
+        run:
           npm version patch --no-git-tag-version
+      - name: Patch package version
+        if: github.ref == 'refs/heads/develop'
+        run:
+          npm version prepatch --no-git-tag-version
+      - name: Publish Package
+        run:
           npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
-      - run: |
+      - name: Push Updated package.json
+        run: |
           git config --global user.name 'git'
           git config --global user.email 'actions@github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
