@@ -1,4 +1,4 @@
-import { Component } from "./component";
+import { Component, ComponentOptions } from "./component";
 
 export class Dropdown extends Component<HTMLElement> {
     constructor(element: HTMLElement) {
@@ -17,6 +17,6 @@ export class Dropdown extends Component<HTMLElement> {
     }
 }
 
-export interface DropdownOptions {
-    locator?: string
+export interface DropdownOptions extends ComponentOptions {
+    
 }

@@ -1,4 +1,4 @@
-import { Component } from "./component";
+import { Component, ComponentOptions } from "./component";
 
 export class Table extends Component<HTMLElement> {
     constructor(element: HTMLElement) { 
@@ -6,6 +6,6 @@ export class Table extends Component<HTMLElement> {
     }
 }
 
-export interface TableOptions {
-    locator?: string
+export interface TableOptions extends ComponentOptions {
+    
 }

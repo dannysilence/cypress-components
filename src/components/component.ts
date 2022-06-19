@@ -51,3 +51,7 @@ export class Component<T extends Element> {
         return doc.defaultView;
     }
 }
+
+export interface ComponentOptions {
+    locator?: string
+}
