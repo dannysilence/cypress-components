@@ -17,7 +17,7 @@ export class Component<T extends Element> {
     public get Width(): number { return this.getWidth(); }
     public get Height(): number { return this.getHeight(); }
     public get Text(): string { return this.getText(); }
-    public get Window(): Window { return this.getWindow(); }
+    public get Window(): Window | null { return this.getWindow(); }
     
     public getElement() {
         return this.element;
@@ -45,7 +45,7 @@ export class Component<T extends Element> {
         return win?.getComputedStyle( this.element ,null).getPropertyValue('background-color') ?? 'rgb(0,0,0)';
     }
     
-    public getWindow(): Window {
+    public getWindow(): Window | null {
         let doc = this.getDocument();
         
         return doc.defaultView;
