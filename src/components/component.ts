@@ -42,7 +42,7 @@ export class Component<T extends Element> {
     public getColor(): string {
         let win = this.getWindow();
         
-        return win.getComputedStyle( this.element ,null).getPropertyValue('background-color');
+        return win instanceof Window ? win.getComputedStyle( this.element ,null).getPropertyValue('background-color') : 'rgb(0,0,0)';
     }
     
     public getWindow(): Window {
