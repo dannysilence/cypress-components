@@ -52,4 +52,4 @@ jobs:
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
           git add package.json
           git commit -am "Automated report"
-          git push origin ${{ github.ref }}
+          git push
