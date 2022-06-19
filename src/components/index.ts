@@ -20,7 +20,7 @@ Cypress.Commands.add<'dropdown', 'optional'>(
     }
   )
 
-Cypress.Commands.add<'dropdown', 'optional'>(
+Cypress.Commands.add<'table', 'optional'>(
     'table',
     { prevSubject: 'optional' },
     (subject?:JQuery<HTMLElement>, locator = '', options?) => {
