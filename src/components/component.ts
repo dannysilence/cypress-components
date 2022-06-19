@@ -11,7 +11,7 @@
 export class Component<T extends Element> {
     constructor(protected element: T) { }
 
-    public get Color(): number { return this.getColor(); }
+    public get Color(): string { return this.getColor(); }
     public get Document(): HTMLDocument { return this.getDocument(); }
     public get Element(): T { return this.getElement(); }
     public get Width(): number { return this.getWidth(); }
@@ -39,7 +39,7 @@ export class Component<T extends Element> {
         return this.element.textContent ?? '';
     }
     
-    public getColor(): number {
+    public getColor(): string {
         let win = this.getWindow();
         
         return win.getComputedStyle( this.element ,null).getPropertyValue('background-color');
@@ -48,6 +48,6 @@ export class Component<T extends Element> {
     public getWindow(): Window {
         let doc = this.getDocument();
         
-        return doc.defaultView || doc.parentWindow;
+        return doc.defaultView;
     }
 }
