@@ -3,7 +3,7 @@
 import { PartialObject } from 'cypress/types/lodash';
 import { Component, ComponentOptions, Dropdown, DropdownOptions, Table, TableOptions } from './';
 
-export class Factory {
+export class Factory {  
     static fromElement<TComponent extends Component<Element>>(element: Element, ctor: (new (base: Element) => TComponent)): TComponent {
         return new ctor(element);
     }
@@ -16,8 +16,8 @@ export class Factory {
         return new ctor(jquery.get(0));
     }
 
-    static registerCommands(): void {
-        Cypress.Commands.add<'component', 'optional'>(
+    static registerCommands(to: Cypress.Cypress): void {
+        to.Commands.add<'component', 'optional'>(
             'component',
             { prevSubject: 'optional' },
             (subject?:JQuery<HTMLElement>, locator = '', options?: PartialObject<ComponentOptions>) => {
@@ -33,7 +33,7 @@ export class Factory {
             }
         )
 
-        Cypress.Commands.add<'dropdown', 'optional'>(
+        to.Commands.add<'dropdown', 'optional'>(
             'dropdown',
             { prevSubject: 'optional' },
             (subject?:JQuery<HTMLElement>, locator = '', options?: PartialObject<DropdownOptions>) => {
@@ -49,7 +49,7 @@ export class Factory {
             }
         )
         
-        Cypress.Commands.add<'table', 'optional'>(
+        to.Commands.add<'table', 'optional'>(
             'table',
             { prevSubject: 'optional' },
             (subject?:JQuery<HTMLElement>, locator = '', options?: PartialObject<TableOptions>) => {
