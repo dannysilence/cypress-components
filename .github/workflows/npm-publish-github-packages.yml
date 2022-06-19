@@ -9,6 +9,8 @@ on:
     - main
     - development
     - release/*
+  release:
+    types: [created]
   workflow_dispatch:
     inputs:
       logLevel:
@@ -33,6 +35,7 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
+          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm run build
 
@@ -47,13 +50,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: 16
-          registry-url: https://npm.pkg.github.com/
+          registry-url: 'https://registry.npmjs.org'
       - run: npm ci
       - run: npm test
       - run: npm version patch --no-git-tag-version
       - run: npm publish --registry https://npm.pkg.github.com/dannysilence/cypress-components
         env:
-          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
       - run: git add package.json
       - run: git commit -m release
-      - run: git push origin <HEAD>
+      - run: git push origin ${{github.ref}}
