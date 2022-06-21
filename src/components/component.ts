@@ -19,12 +19,26 @@ export class Component<T extends Element> {
     public get Width(): number { return this.getWidth(); }
     public get Height(): number { return this.getHeight(); }
     public get Text(): string { return this.getText(); }
+    public set Text(value: string) { this.setText(value); }
+
     public get Window(): Window | null { return this.getWindow(); }
     
     public getElement() {
         return this.element;
     }
-    
+
+    public click(): void {
+        cy
+            .wrap(this.element, {log: false})
+            .click();
+    } 
+
+    public type(value: string): void {
+        cy
+            .wrap(this.element, {log: false})
+            .type(value);
+    }
+
     public getEnabled(): Boolean {
         return !(((this.element as unknown) as HTMLInputElement).disabled);
     }
@@ -51,6 +65,14 @@ export class Component<T extends Element> {
         return this.element.tagName.toUpperCase() === 'INPUT'
             ? ((this.element as unknown) as HTMLInputElement).value
             : this.element.textContent ?? '';
+    }
+
+    public setText(value: string): void {
+        if(this.element.tagName.toUpperCase() === 'INPUT') {
+            ((this.element as unknown) as HTMLInputElement).value = value
+        } else {
+            this.element.textContent = value;
+        }
     }
     
     public getColor(): string {
