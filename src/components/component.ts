@@ -37,7 +37,7 @@ export class Component<T extends Element> {
 
     public getText(): string {
         return this.element.tagName.toUpperCase() === 'INPUT'
-            ? this.element.nodeValue
+            ? ((this.element as unknown) as HTMLInputElement).value
             : this.element.textContent ?? '';
     }
     
