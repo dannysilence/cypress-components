@@ -14,6 +14,8 @@ export class Component<T extends Element> {
     public get Color(): string { return this.getColor(); }
     public get Document(): HTMLDocument { return this.getDocument(); }
     public get Element(): T { return this.getElement(); }
+    public get Enabled(): T { return this.getElement(); }
+    public get Exists(): T { return this.getElement(); }
     public get Width(): number { return this.getWidth(); }
     public get Height(): number { return this.getHeight(); }
     public get Text(): string { return this.getText(); }
@@ -23,6 +25,16 @@ export class Component<T extends Element> {
         return this.element;
     }
     
+    public getEnabled(): Boolean {
+        return !(((this.element as unknown) as HTMLInputElement).disabled);
+    }
+
+    public getExists() {
+        const doc = this.getDocument();
+
+        return doc.body.contains(this.element);
+    }
+
     public getDocument(): HTMLDocument {
         return this.element.ownerDocument;
     }
