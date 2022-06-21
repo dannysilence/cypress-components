@@ -14,8 +14,8 @@ export class Component<T extends Element> {
     public get Color(): string { return this.getColor(); }
     public get Document(): HTMLDocument { return this.getDocument(); }
     public get Element(): T { return this.getElement(); }
-    public get Enabled(): T { return this.getElement(); }
-    public get Exists(): T { return this.getElement(); }
+    public get Enabled(): Boolean { return this.getEnabled(); }
+    public get Exists(): Boolean { return this.getExists(); }
     public get Width(): number { return this.getWidth(); }
     public get Height(): number { return this.getHeight(); }
     public get Text(): string { return this.getText(); }
