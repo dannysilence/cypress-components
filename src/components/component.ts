@@ -36,7 +36,9 @@ export class Component<T extends Element> {
     }    
 
     public getText(): string {
-        return this.element.textContent ?? '';
+        return this.element.tagName.toUpperCase() === 'INPUT'
+            ? this.element.nodeValue
+            : this.element.textContent ?? '';
     }
     
     public getColor(): string {
