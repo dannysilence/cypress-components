@@ -34,8 +34,8 @@ export class Component<T extends Element> {
     } 
 
     public type(value: string): void {
-        const el = $(this.element);
-        
+        const el = Cypress.$(this.element);
+
         cy
             .wrap(el, {log: false})
             .type(value);
