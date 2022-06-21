@@ -34,8 +34,10 @@ export class Component<T extends Element> {
     } 
 
     public type(value: string): void {
+        const el = $(this.element);
+        
         cy
-            .wrap(this.element, {log: false})
+            .wrap(el, {log: false})
             .type(value);
     }
 
