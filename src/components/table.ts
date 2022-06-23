@@ -5,6 +5,18 @@ export class Table extends Component<HTMLElement> {
         super(element);
     }
 
+    public getCell(row: number, column: number|string) : HTMLElement {
+        const col = this.getColumnIndex(column);
+
+        return this.element.querySelector(`tbody > tr:nth-child(${row+1}) > td:nth-child(${col+1})`) as HTMLElement;
+    }
+
+    public getCellData(row: number, column: number|string) : string {
+        const cell = this.getCell(row, column);
+
+        return cell.innerText;
+    }
+
     public getColumnNames(): string[] {
         return Array.from(this.element.querySelectorAll('thead th')).map(e => e.textContent);
     }
@@ -39,6 +51,8 @@ export class Table extends Component<HTMLElement> {
 
         return items.map(i => i.textContent);
     }
+
+
 }
 
 export interface TableOptions extends ComponentOptions {
