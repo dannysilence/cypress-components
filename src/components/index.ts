@@ -6,7 +6,7 @@ import { Component, ComponentOptions, Dropdown, DropdownOptions, Table, TableOpt
 export * from './component';
 export * from './factory';
 export * from './dropdown';
-export * from './table';
+export * from './table'; 
 
 declare global {
     namespace Cypress {
