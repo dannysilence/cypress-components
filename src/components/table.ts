@@ -27,11 +27,17 @@ export class Table extends Component<HTMLElement> {
         return -1;
     }
 
-    public getColumnData(id: number|string): string[] {
+    public getColumn(id: number|string): HTMLElement[] {
         const col = this.getColumnIndex(id);
-        const items = Array.from(this.element.querySelectorAll(`tbody > tr > td:nth-child(${col+1})`)).map(e => e.textContent);
+        const items = Array.from(this.element.querySelectorAll(`tbody > tr > td:nth-child(${col+1})`)).map(i => ((i as unknown) as HTMLElement));
 
-        return  items;
+        return items;
+    }
+
+    public getColumnData(id: number|string): string[] {
+        const items = this.getColumn(id);
+
+        return items.map(i => i.textContent);
     }
 }
 
