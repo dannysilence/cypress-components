@@ -57,7 +57,7 @@ export class Table extends Component<HTMLElement> {
     }
 
     public getRowData(row:number) : string[] {
-        const cells = this.getRow();
+        const cells = this.getRow(row);
         return cells.map(e=>e.innerText);
     } 
 }
