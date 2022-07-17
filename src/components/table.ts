@@ -52,7 +52,14 @@ export class Table extends Component<HTMLElement> {
         return items.map(i => i.textContent);
     }
 
+    public getRow(row: number): HTMLElement[] {
+        return Array.from(this.element.querySelectorAll(`tbody tr:nth-child(${row}) td`));
+    }
 
+    public getRowData(row:number) : string[] {
+        const cells = this.getRow(row);
+        return cells.map(e=>e.innerText);
+    } 
 }
 
 export interface TableOptions extends ComponentOptions {
